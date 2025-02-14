@@ -1,0 +1,91 @@
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: none;
+  padding: 0px;
+}
+
+* {
+  margin: 0px;
+  font-family: Arial
+}
+
+.navbar a {
+  padding: 0px 16px;
+  color: white;
+  position: relative;
+  transform: translateY(25%);
+}
+
+.navbar img {
+  width: 60px;
+  height: 60px;
+  margin-left: 0%;
+}
+
+.navbar input {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: whitesmoke;
+}
+
+.navbar button {
+  border: none;
+  background-color: lightgray;
+  font-size: 16px;
+  color: white;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.navbar button:active {
+  transform: scale(0.99);
+  background-color: darkgray;
+}
+
+.navbar {
+  background-color: gray;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  text-align: left;
+  height: 5%;
+}
+
+.article {
+  margin: auto;
+  width: 50%;
+  text-align: left;
+}
+
+.article a {
+  color: blue;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Georgia"
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
