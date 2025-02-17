@@ -67,6 +67,7 @@ function genArticle(name) {
   document.getElementById("article").innerHTML = 
     `<img id="articleimage" class="articleimage" src="">` + l[0];
   getImage(name).then((img) => {
+    console.log(img);
     const result = img.result[0].url
     console.log(result);
     document.getElementById("articleimage").src = result;
