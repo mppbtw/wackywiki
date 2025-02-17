@@ -34,8 +34,11 @@ function linky(str) {
   for (let i=0; i<links.length; i++) {
     str = str.replace(
       "***" + links[i] + "***",
-      `<a href="#" id=${links[i]}>${links[i]}</a>`
+      `<a href="#" id="linky" + ${links[i]}>${links[i]}</a>`
     )
+    document.getElementById("linky" + links[i]).onclick = function() {
+      document.getElementById(genArticle(links[i]))
+    }
   }
   return str
 }
