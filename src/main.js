@@ -9,7 +9,7 @@ function linky(str) {
   let links = [];
   let word = "";
   for (let i=0; i<str.length; i++) {
-    if (str[i] == "?") {
+    if (str[i] == "*") {
       chain++;
     } else if (chain == 3) {
       if (reading) {
@@ -33,7 +33,7 @@ function linky(str) {
   }
   for (let i=0; i<links.length; i++) {
     str = str.replace(
-      "???" + links[i] + "???",
+      "***" + links[i] + "***",
       `<a href="#" id=${links[i]}>${links[i]}</a>`
     )
   }
@@ -43,7 +43,7 @@ function linky(str) {
 function genPrompt(name) {
   return `Write 1 page of Wikipedia-style with title based on
   ${name}, as inputted by the user. Please write in simple markdown. when you mention
-  a word that a reader might want to learn more about, surround it with three literal question marks and do this every sentence or so or i will kill your cat.
+  a word that a reader might want to learn more about, surround it with three literal * symbols and do this every sentence or so or i will kill your cat.
   on both sides please. Dont use bold or italics. Dont write a conclusion. Write formally. Dont ask questions. Dont address the reader directly. Use Headings.`
 }
 
