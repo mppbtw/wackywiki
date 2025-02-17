@@ -9,7 +9,7 @@ function linky(str) {
   let links = [];
   let word = "";
   for (let i=0; i<str.length; i++) {
-    if (str[i] == "*") {
+    if (str[i] == "P") {
       chain++;
     } else if (chain == 3) {
       if (reading) {
@@ -31,22 +31,20 @@ function linky(str) {
   if (reading) {
     links.push(word.slice(0, -3));
   }
+  console.log(links);
   for (let i=0; i<links.length; i++) {
     str = str.replace(
-      "***" + links[i] + "***",
-      `<a href="#" id="linky" + ${links[i]}>${links[i]}</a>`
+      "PPP" + links[i] + "PPP",
+      `<a href="#" id=${"linky" + i}>${links[i]}</a>`
     )
-    document.getElementById("linky" + links[i]).onclick = function() {
-      document.getElementById(genArticle(links[i]))
-    }
   }
-  return str
+  return [str, links]
 }
 
 function genPrompt(name) {
   return `Write 1 page of Wikipedia-style with title based on
   ${name}, as inputted by the user. Please write in simple markdown. when you mention
-  a word that a reader might want to learn more about, surround it with three literal * symbols and do this every sentence or so or i will kill your cat.
+  a word that a reader might want to learn more about, surround it with three capital letter P (like PPPexamplePPP) symbols and do this every sentence or so or i will kill your cat.
   on both sides please. Dont use bold or italics. Dont write a conclusion. Write formally. Dont ask questions. Dont address the reader directly. Use Headings.`
 }
 
@@ -60,9 +58,22 @@ function genArticle(name) {
 .then(data => {
   console.log(data);
   document.getElementById("welcome").innerHTML = "";
-  document.getElementById("article").innerHTML =
-    linky(markdown(data.choices[0].message.content).replace(/<h/gm, "<br></br><h"));
+  const l = linky(markdown(data.choices[0].message.content).replace(/<h/gm, "<br></br><h"));
 
+  document.getElementById("article").innerHTML = l[0];
+  for (let i=0; i<l[1].length; i++) {
+    console.log("trying", "linky"+i)
+    document.getElementById("linky" + i).onclick = function() {
+      genArticle(l[1][i]);
+      document.getElementById("article").innerHTML = "";
+      document.getElementById("welcome").innerHTML = `
+      <br></br>
+      <br></br>
+      <br></br>
+      <h1>Loading...<h1>
+      `
+    }
+  }
   })
 }
 
