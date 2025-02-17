@@ -49,7 +49,7 @@ function genPrompt(name) {
 }
 
 async function getImage(name) {
-  await ((await fetch(proxyurl+`/image?term=${name.replace(/ +/g, "+")}`)).json());
+  return await ((await fetch(proxyurl+`/image?term=${name.replace(/ +/g, "+")}`)).json());
 }
 
 function genArticle(name) {
