@@ -48,6 +48,10 @@ function genPrompt(name) {
   on both sides please. Dont use bold or italics. Dont write a conclusion. Write formally. Dont ask questions. Dont address the reader directly. Use Headings.`
 }
 
+async function getImage(name) {
+  await fetch(proxyurl+`/image?term=${name.replace(/ +/g, "+"}`).json();
+}
+
 function genArticle(name) {
   const prompt = genPrompt(name).replace(/ +/g, "+");
   console.log(prompt)
@@ -60,7 +64,13 @@ function genArticle(name) {
   document.getElementById("welcome").innerHTML = "";
   const l = linky(markdown(data.choices[0].message.content).replace(/<h/gm, "<br></br><h"));
 
-  document.getElementById("article").innerHTML = l[0];
+  document.getElementById("article").innerHTML = 
+    `<img id="articleimage" class="articleimage" src="">` + l[0];
+  getImage(name).then((img) => {
+    const result = img.result[0].url
+    console.log(result);
+    document.getElementById("articleimage").src = result;
+  })
   for (let i=0; i<l[1].length; i++) {
     console.log("trying", "linky"+i)
     document.getElementById("linky" + i).onclick = function() {
