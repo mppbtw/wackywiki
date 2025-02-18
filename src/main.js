@@ -68,12 +68,7 @@ function genArticle(name) {
     `<img id="articleimage" class="articleimage" src="">` + l[0];
   getImage(name).then((img) => {
     console.log(img);
-    try {
     const result = img.result[0].url
-    } catch (e) {
-      showErrorScreen();
-      return;
-    }
     console.log(result);
     document.getElementById("articleimage").src = result;
   })
@@ -122,7 +117,11 @@ function search() {
   <br></br>
   <h1>Loading...<h1>
   `
-  genArticle(input);
+  try {
+    genArticle(input);
+  } catch (e) {
+    showErrorScreen();
+  }
 }
 
 document.getElementById("searchbutton").onclick = () => {
