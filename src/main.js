@@ -76,9 +76,7 @@ function genArticle(name) {
 .then(data => {
   console.log(data);
   if (data.hasOwnProperty("error")) {
-    if (data.error.length > 0) {
-      showErrorScreen()
-    }
+    showErrorScreen()
     return;
   }
   document.getElementById("welcome").innerHTML = "";
