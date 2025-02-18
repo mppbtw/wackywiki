@@ -69,7 +69,7 @@ async function getImage(name) {
 function genArticle(name) {
   const prompt = genPrompt(name).replace(/ +/g, "+");
   console.log(prompt)
-  fetch(proxyurl+`/proxy?key=${ishouldntdothis}&prompt=${prompt}`, {
+  fetch(proxyurl+`/proxy?prompt=${prompt}`, {
     method: "GET",
   })
 .then(response => response.json())
@@ -108,7 +108,7 @@ function genArticle(name) {
 
 
 function search() {
-  if (ishouldntdothis == "" || proxyurl == "") {
+  if (proxyurl == "") {
     return;
   }
   const input = document.getElementById("searchbar").value;
@@ -128,10 +128,6 @@ function search() {
 
 document.getElementById("searchbutton").onclick = () => {
   search();
-}
-
-document.getElementById("apibutton").onclick = () => {
-  ishouldntdothis = document.getElementById("apibar").value;
 }
 
 document.getElementById("urlbutton").onclick = () => {
