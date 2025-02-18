@@ -68,7 +68,12 @@ function genArticle(name) {
     `<img id="articleimage" class="articleimage" src="">` + l[0];
   getImage(name).then((img) => {
     console.log(img);
+    try {
     const result = img.result[0].url
+    } catch (e) {
+      showErrorScreen();
+      return;
+    }
     console.log(result);
     document.getElementById("articleimage").src = result;
   })
@@ -86,6 +91,20 @@ function genArticle(name) {
     }
   }
   })
+}
+
+function showErrorScreen() {
+  document.getElementById("article").innerHTML = "";
+  document.getElementById("welcome").innerHTML = `<div id="welcome" class="welcome">
+    <br>
+    <br>
+    <br>
+    
+    <img width="70%" src="https://media.tenor.com/7LL9Sz_czDkAAAAM/orangutan-hammer.gif">
+    <h1>Something went wrong!</h1>
+    <p>A server error has been detected and our highly-skilled team won't be working on the issue. ¯\_(ツ)_/¯</p>
+    
+</div>`;
 }
 
 function search() {
