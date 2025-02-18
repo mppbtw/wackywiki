@@ -69,6 +69,10 @@
   text-align: center;
 }
 
+.articleimage {
+  width: 100%;
+}
+
 .article {
   margin: auto;
   width: 50%;
