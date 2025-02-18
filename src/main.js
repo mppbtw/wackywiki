@@ -12,7 +12,7 @@ function showErrorScreen() {
     
     <img width="70%" src="https://media.tenor.com/7LL9Sz_czDkAAAAM/orangutan-hammer.gif">
     <h1>Something went wrong!</h1>
-    <p>A server error has been detected and our highly-skilled team won't be working on the issue. ¯\_(ツ)_/¯</p>
+    <p>A server error has been detected and our highly-skilled team won't be working on the issue. ¯\\_(ツ)_/¯</p>
     
 </div>`;
 }
