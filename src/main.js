@@ -3,6 +3,20 @@ import markdown from "./drawdown.js"
 let ishouldntdothis = "";
 let proxyurl = "";
 
+function showErrorScreen() {
+  document.getElementById("article").innerHTML = "";
+  document.getElementById("welcome").innerHTML = `<div id="welcome" class="welcome">
+    <br>
+    <br>
+    <br>
+    
+    <img width="70%" src="https://media.tenor.com/7LL9Sz_czDkAAAAM/orangutan-hammer.gif">
+    <h1>Something went wrong!</h1>
+    <p>A server error has been detected and our highly-skilled team won't be working on the issue. ¯\_(ツ)_/¯</p>
+    
+</div>`;
+}
+
 function linky(str) {
   let chain = 0;
   let reading = false;
@@ -61,6 +75,12 @@ function genArticle(name) {
 .then(response => response.json())
 .then(data => {
   console.log(data);
+  if (data.hasOwnProperty("error")) {
+    if (data.error.length > 0) {
+      showErrorScreen()
+    }
+    return;
+  }
   document.getElementById("welcome").innerHTML = "";
   const l = linky(markdown(data.choices[0].message.content).replace(/<h/gm, "<br></br><h"));
 
@@ -88,19 +108,6 @@ function genArticle(name) {
   })
 }
 
-function showErrorScreen() {
-  document.getElementById("article").innerHTML = "";
-  document.getElementById("welcome").innerHTML = `<div id="welcome" class="welcome">
-    <br>
-    <br>
-    <br>
-    
-    <img width="70%" src="https://media.tenor.com/7LL9Sz_czDkAAAAM/orangutan-hammer.gif">
-    <h1>Something went wrong!</h1>
-    <p>A server error has been detected and our highly-skilled team won't be working on the issue. ¯\_(ツ)_/¯</p>
-    
-</div>`;
-}
 
 function search() {
   if (ishouldntdothis == "" || proxyurl == "") {
@@ -117,11 +124,8 @@ function search() {
   <br></br>
   <h1>Loading...<h1>
   `
-  try {
-    genArticle(input);
-  } catch (e) {
-    showErrorScreen();
-  }
+  genArticle(input);
+
 }
 
 document.getElementById("searchbutton").onclick = () => {
