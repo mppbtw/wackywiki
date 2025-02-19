@@ -22,7 +22,7 @@
 
 .bigwindow {
   background-color: #afafaf;
-  width: 50%;
+  width: 70%;
   height: 60vh;
   border-radius: 50px;
   display: flex;
@@ -36,6 +36,54 @@
   width: 90%;
   height: 90%;
   border-radius: 50px;
+  display: flex;
+
+}
+
+.leftbit {
+  word-break: break-word;
+  width: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rightbit {
+  word-break: break-word;
+  width: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  margin-bottom: 10%;
+  display: grid;
+}
+
+.rightbit button {
+  border-radius: 8px;
+  border-style: solid;
+  height: 25px;
+  padding-inline: 20px;
+  font-size: 16px;
+  margin-top: 5px;
+  border-width: 2px;
+  border-color: #bfbfbf;
+  color: #0f0f0f;
+}
+
+.rightbit input {
+  border-radius: 12px;
+  height: 50px;
+  padding-inline: 20px;
+  font-size: 16px;
+  margin-top: 25px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #bfbfbf;
+}
+
+.errorbox {
+  background-color: #c56767;
+  border-radius: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (prefers-color-scheme: light) {

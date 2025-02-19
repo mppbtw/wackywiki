@@ -1,7 +1,7 @@
 import markdown from "./drawdown.js"
 
 let ishouldntdothis = "";
-let proxyurl = "";
+window.backend = "";
 
 function showErrorScreen() {
   document.getElementById("article").innerHTML = "";
@@ -63,13 +63,13 @@ function genPrompt(name) {
 }
 
 async function getImage(name) {
-  return await ((await fetch(proxyurl+`/image?term=${name.replace(/ +/g, "+")}`)).json());
+  return await ((await fetch(window.backend+`/image?term=${name.replace(/ +/g, "+")}`)).json());
 }
 
 function genArticle(name) {
   const prompt = genPrompt(name).replace(/ +/g, "+");
   console.log(prompt)
-  fetch(proxyurl+`/proxy?prompt=${prompt}`, {
+  fetch(window.backend+`/proxy?prompt=${prompt}`, {
     method: "GET",
   })
 .then(response => response.json())
@@ -108,7 +108,7 @@ function genArticle(name) {
 
 
 function search() {
-  if (proxyurl == "") {
+  if (window.backend == "") {
     return;
   }
   const input = document.getElementById("searchbar").value;
@@ -131,5 +131,5 @@ document.getElementById("searchbutton").onclick = () => {
 }
 
 document.getElementById("urlbutton").onclick = () => {
-  proxyurl = document.getElementById("urlbar").value;
+  window.backend = document.getElementById("urlbar").value;
 }
