@@ -13,20 +13,28 @@
         <div class="smallerwindow">
           <div class="leftbit">
             <br>
-            <h1>Log in to access this feature</h1>
+            <h1>Welcome to WackyWiki!</h1>
             <br>
-            <p>Are you a
-            loser who doesn't already have an account?</p>
-            <a href="/signup">Sign Up</a>
+            <p>Passwords must:
+            <ul style="text-align:left">
+              <li>Be at least 8 characters long</li>
+              <li>Contain at least one capital letter</li>
+              <li>Contain at least one number</li>
+            </ul></p>
+            <br>
+            <p>
+            Already have an account?
+            <a href="/signup">Log In</a>
+            </p>
           </div>
           <div class="rightbit">
             <input id="namebox" type="text" placeholder="Username">
             <input id="passbox" type="password" placeholder="Password">
-            <button id="loginbutton">Log In</button>
+            <button id="loginbutton">Create Account</button>
           </div>
         </div>
       </div>
     </div>
   </body>
-  <script type="module" src="./src/login.js"></script>
+  <script type="module" src="./src/signup.js"></script>
 </html>

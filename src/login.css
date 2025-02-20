@@ -53,6 +53,7 @@
   display: flex;
   margin-bottom: 10%;
   display: grid;
+  margin-right: 20px;
 }
 
 .rightbit button {

@@ -4,7 +4,7 @@ document.getElementById("loginbutton").onclick = () => {
     const password = document.getElementById("passbox").value;
     fetch(
         window.backend +
-        `/login?username=${username}&password=${password}`, {method: "GET"}
+        `/signup?username=${username}&password=${password}`, {method: "GET"}
     ).then(response => response.json())
         .then(data => {;
             console.log(data);
