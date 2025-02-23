@@ -1,7 +1,21 @@
 import markdown from "./drawdown.js"
+import getCookie from "./utils.js";
 
 let ishouldntdothis = "";
 window.backend = "";
+
+const name = getCookie("username");
+if (name != "") {
+  document.getElementById("rightbit").innerHTML = `
+  <p>Logged in as ${getCookie("username")}</p>
+  <a href="/history">History</a>
+  <a href="#" onclick="
+    document.cookie = 'username=';
+    document.cookie = 'sessionid=';
+    window.location.reload();
+  ">Log out</a>
+`
+}
 
 function showErrorScreen() {
   document.getElementById("article").innerHTML = "";
@@ -66,10 +80,18 @@ async function getImage(name) {
   return await ((await fetch(window.backend+`/image?term=${name.replace(/ +/g, "+")}`)).json());
 }
 
+function birdwatching(title) {
+  const id = getCookie("sessionid");
+  if (id == "")
+    return ""
+
+  return "&sessionid=" + id + "&title=" + title;
+}
+
 function genArticle(name) {
   const prompt = genPrompt(name).replace(/ +/g, "+");
-  console.log(prompt)
-  fetch(window.backend+`/proxy?prompt=${prompt}`, {
+
+  fetch(window.backend+`/proxy?prompt=${prompt}${birdwatching(name)}`, {
     method: "GET",
   })
 .then(response => response.json())

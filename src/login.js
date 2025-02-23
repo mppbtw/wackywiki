@@ -3,18 +3,20 @@ document.getElementById("loginbutton").onclick = () => {
     const username = document.getElementById("namebox").value;
     const password = document.getElementById("passbox").value;
     fetch(
-        window.backend +
+        window.backend+
         `/login?username=${username}&password=${password}`, {method: "GET"}
     ).then(response => response.json())
-        .then(data => {;
-            console.log(data);
-            if (!data.success) {
-                window.alert(data.error);
-                document.getElementById("namebox").value = "";
-                document.getElementById("passbox").value = "";
-                return;
-            } else {
-                window.location.replace("/")
-            }
-        });
+    .then(data => {
+        if (!data.success) {
+            window.alert(data.error);
+            document.getElementById("namebox").value = "";
+            document.getElementById("passbox").value = "";
+            return;
+        }
+        window.location.replace("/hooray");
+        document.cookie = `username=${username}`;
+        document.cookie = `sessionid=${data.sessionid}`;
+        return;
+    });
+
 }

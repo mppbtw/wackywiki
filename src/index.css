@@ -24,6 +24,13 @@
   transform: translateY(25%);
 }
 
+.navbar p {
+  padding: 0px 16px;
+  color: white;
+  position: relative;
+  transform: translateY(25%);
+}
+
 .navbar img {
   width: 60px;
   height: 60px;
@@ -81,6 +88,14 @@
 
 .article a {
   color: blue;
+}
+
+.rightbit {
+  display: flex;
+  text-align: left;
+  margin: auto;
+  margin-right: 0px;
+  vertical-align: center;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
